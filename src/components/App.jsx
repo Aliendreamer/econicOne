@@ -6,7 +6,6 @@ import Page from "./Page";
 function App() {
   return (
 	<div className="flex h-screen">
-		{/* //<Navigation/> */}
 		<Routes>
 			<Route exact index  path="/" element={<Login/>} />
 			<Route exact path="/register" element={<Register/>} />
@@ -18,12 +17,5 @@ function App() {
 	</div>
   )
 }
-// const Navigation = () => (
-// 	<nav>
-// 	<Link to="/login">Landing</Link>
-// 	<Link to="/register">Register</Link>
-// 	<Link to="/page">page</Link>
-// 	</nav>
-//   );
 
 export default App
