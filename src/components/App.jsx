@@ -1,23 +1,29 @@
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import ProtectedRoute from '../utilities/ProtectedRoute';
+import Login from './Login';
+import Register from './Register';
+import Page from "./Page";
 function App() {
-  const Counter = () => {
-    const [count, setCount] = useState(0)
-    return (
-        <div className="flex h-screen">
-            <div className="m-auto">
-                <div className="text-6xl text-red-600">{count}</div>
-                <button className="px-6 py-2 rounded bg-green-800 hover:bg-green-600 text-white" type="button" onClick={() => setCount((count) => count + 1)}>
-                    count+
-                </button>
-            </div>
-        </div>
-    )
-}
   return (
-	<div>
-		<Counter />
+	<div className="flex h-screen">
+		{/* //<Navigation/> */}
+		<Routes>
+			<Route exact index  path="/" element={<Login/>} />
+			<Route exact path="/register" element={<Register/>} />
+			<Route exact element={<ProtectedRoute/>} >
+				<Route path="/page"element={<Page />} />
+			</Route>
+			<Route path="*" element={<p>There is nothing here: 404!</p>} />
+		</Routes>
 	</div>
   )
 }
+// const Navigation = () => (
+// 	<nav>
+// 	<Link to="/login">Landing</Link>
+// 	<Link to="/register">Register</Link>
+// 	<Link to="/page">page</Link>
+// 	</nav>
+//   );
 
 export default App
