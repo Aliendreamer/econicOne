@@ -8,6 +8,7 @@ function App() {
 	<div className="flex h-screen">
 		<Routes>
 			<Route exact index  path="/" element={<Login/>} />
+			<Route exact path="/login" element={<Login/>} />
 			<Route exact path="/register" element={<Register/>} />
 			<Route exact element={<ProtectedRoute/>} >
 				<Route path="/page"element={<Page />} />
