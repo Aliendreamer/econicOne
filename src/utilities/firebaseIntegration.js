@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore, deleteDoc, collection, getDocs, getDoc, updateDoc, setDoc, doc } from "firebase/firestore";
+import { getFirestore, deleteDoc, collection, getDocs, getDoc, updateDoc, addDoc, doc } from "firebase/firestore";
 const app = initializeApp({
 	apiKey: import.meta.env.VITE_API_KEY,
 	authDomain: import.meta.env.VITE_AUTH_DOMAIN,
@@ -18,12 +18,13 @@ const logout = () => {
 };
 
 const addDocument = async (bike) => {
-	const newBike = await setDoc(doc(db, "bikes"), bike);
-	return newBike;
+	const newBike = await addDoc(collection(db, "bikes"), bike);
+	const bikeData = await getDocument(newBike.id);
+	return bikeData;
 }
 
-const deleteDocument = async (index) => {
-	await deleteDoc(doc(db, "bikes", index));
+const deleteDocument = async (id) => {
+	await deleteDoc(doc(db, "bikes", id));
 }
 
 const updateDocument = async (id, data) => {
@@ -42,7 +43,7 @@ const getDocument = async (id) => {
 	if (!docSnap.exists()) {
 		return null;
 	}
-	return docSnap.data();
+	return { id, ...docSnap.data() };
 }
 
 

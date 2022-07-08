@@ -1,13 +1,10 @@
 /* eslint-disable react/prop-types */
 const Modal = ({onClose,onAction,modalTitle,modalText,actionButtonTitle,children})=>{
 
-	return(<div id="large-modal" tabIndex="-1" className="overflow-y-auto fixed overflow-x-hidden m-25 border-black border-solid border-box z-100 w-full h-modal">
+	return(<div id="large-modal" tabIndex="-1" className="flex justify-center items-center overflow-y-auto absolute overflow-x-hidden border-black border-solid border-box z-50 w-fit  h-fit ">
 		<div className="relative p-4 w-full max-w-4xl h-full md:h-auto">
 			<div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-				<div className="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
-					<h3 className="text-xl font-medium text-gray-900 dark:text-white">
-						{modalTitle}
-					</h3>
+				<div className="flex rounded-t border-box dark:border-gray-600">
 					<button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="large-modal"
 					onClick={onClose}
 					>
@@ -15,8 +12,11 @@ const Modal = ({onClose,onAction,modalTitle,modalText,actionButtonTitle,children
 
 					</button>
 				</div>
+				<h3 className="text-xl text-center font-medium text-gray-900 dark:text-white">
+						{modalTitle}
+				</h3>
 				<div className="p-6 space-y-6">
-					<p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+					<p className="text-base text-center text-gray-500 dark:text-gray-400">
 					{modalText}
 					</p>
 					{children}
@@ -36,43 +36,6 @@ const Modal = ({onClose,onAction,modalTitle,modalText,actionButtonTitle,children
 		</div>
 	</div>
 	)
-
-// 	return(<>
-// 	<div className="modal fade absolute inset-8 h-1/2 w-1/2 outline-2 border-solid overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-// 		<div className="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-// 		<div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-// 			<div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-// 			<h5 className="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-// 				{modalTitle}
-// 			</h5>
-// 			<button type="button"
-// 				className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-// 				data-bs-dismiss="modal" aria-label="Close"></button>
-// 			</div>
-// 			<div className="modal-body relative p-4">
-// 			<p>{modalText}</p>
-// 			</div>
-// 			{children}
-// 			<div
-// 			className="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-// 			<button type="button"
-// 				className="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-// 				data-bs-dismiss="modal"
-// 				onClick={onClose}
-// 				>
-// 				Close
-// 			</button>
-// 			<button type="button"
-// 				className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
-// 				onClick={onAction}
-// 				>
-// 				{actionButtonTitle}
-// 			</button>
-// 			</div>
-// 		</div>
-// 		</div>
-// 	</div>
-//   </>)
 }
 
 export default Modal;
