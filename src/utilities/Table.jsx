@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useMemo } from 'react'
 import { sortRows, filterRows } from './helpers'
+import {logout} from "../utilities/firebaseIntegration"
 
 export const Table = ({ columns,caption,setAdd,editBike,deleteBike, rows }) => {
   const [filters, setFilters] = useState({})
@@ -113,6 +114,7 @@ export const Table = ({ columns,caption,setAdd,editBike,deleteBike, rows }) => {
       <div className='my-4 flex space-x-2 justify-start'>
           <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onClick={clearAll}>Clear all filters </button>
 			<button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onClick={setAdd}>Add new Bike </button>
+			<button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onClick={logout}>logout </button>
       </div>
     </div>
   )
